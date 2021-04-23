@@ -1,0 +1,74 @@
+<div>
+  <div class="container-fluid">
+    <form method="POST" #contactus="ngForm" (ngSubmit)="onSubmit(contactus)">
+      <div class="form-group">
+        <label for="name"><strong>Name</strong></label>
+        <input
+          ngModel
+          name="name"
+          type="text"
+          id="name"
+          placeholder="Enter a Name"
+          #Name="ngModel"
+          [class]="changeClass(Name)"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="(Name.touched || Name.dirty) && !Name.valid"
+        >
+          <div *ngIf="Name.errors.required">
+            Name is required. Field Cannot be empty.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email"><strong>Email</strong></label>
+        <input
+          ngModel
+          name="email"
+          type="email"
+          class="form-control"
+          id="email"
+          placeholder="Enter Email Address"
+          #emailadd="ngModel"
+          [class]="changeClass(emailadd)"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="(emailadd.touched || emailadd.dirty) && !emailadd.valid"
+        >
+          <div *ngIf="emailadd.errors?.required">
+            Email address is required. Field Cannot be empty.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="message"><strong>Message</strong></label>
+        <input
+          ngModel
+          name="message"
+          type="textarea"
+          id="message"
+          placeholder="Enter a message"
+          #msg="ngModel"
+          [class]="changeClass(msg)"
+          required
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="(msg.touched || msg.dirty) && !msg.valid"
+        >
+          <div *ngIf="msg.errors.required">
+            Message is required. Field Cannot be empty.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
